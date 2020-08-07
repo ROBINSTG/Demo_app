@@ -1,0 +1,19 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %} Edit submission {% endblock %}
+
+{% block body %}
+<div class="ml-3 mr-3">
+    <h1>Submission # {{ submission.id  }}</h1>
+</div>
+<div class="ml-3">
+    <p>
+        client: {{ submission.id  }}
+        type: {{ submission.type  }}
+        number of cars: {{ submission.numberOfCars }}
+        submission's address: {{ submission.submissionAddress }}
+        past claim(s): {{ submission.pastClaims }}
+    </p>
+    <a href="/demo_application/">Back to my submissions</a>
+</div>
+{% endblock %}

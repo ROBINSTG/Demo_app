@@ -1,0 +1,64 @@
+<!--author: Robin St-Georges date: 2020-08-06
+Simple demo project realized with the goal to show understanding of PHP, Javascript & co.
+Basic template used to create the navigation bar of the application-->
+
+<nav class="navbar navbar-dark navbar-expand-sm bg-dark mb-4 mt-4">
+    <div class="barArea collapse navbar-collapse">
+        <!--left side of the navigation bar-->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <div class="mt-1 pb-2 bt-2 pr-3 pl-2 bg-warning">
+            </li>
+            <li class="nav-item">
+                <a class="text-light" href="/demo_application/home/">Home</a>
+            </li>
+            {% if is_granted("ROLE_USER") %}
+                <li class="nav-item">
+                    <div class="mt-1 pb-2 bt-2 pr-3 pl-2 bg-warning">
+                </li>
+                <li class="nav-item">
+                    <a class="text-light" href="/demo_application/submissions/">View all my current submissions</a>
+                </li>
+                <li class="nav-item">
+                    <div class="mt-1  pb-2 bt-2 pr-3 pl-2 bg-warning">
+                </li>
+                <li class="nav-item">
+                    <a class="text-light" href="/demo_application/submission/create/">Create a new submission</a>
+                </li>
+            {% endif %}
+            <li class="nav-item">
+                <div class="mt-1 pb-2 bt-2 pr-3 pl-2 bg-warning">
+            </li>
+            <li class="nav-item">
+                <a class="text-light" href="/demo_application/about">About us</a>
+            </li>
+        </ul>
+        <!--right side of the navigation bar-->
+        <ul class="navbar-nav">
+            {% if is_granted("IS_AUTHENTICATED_ANONYMOUSLY") %}
+                <li class="nav-item">
+                    <div class="mt-1 pb-2 bt-2 pr-3 pl-2 bg-warning">
+                </li>
+                <li class="nav-item">
+                    <a class="text-light" href="/demo_application/login/">Log in</a>
+                </li>
+            {% endif %}
+            {% if is_granted("ROLE_USER") %}
+                <li class="nav-item">
+                    <div class="mt-1 pb-2 bt-2 pr-3 pl-2 bg-warning">
+                </li>
+                <li class="nav-item">
+                    <a class="text-light" href="/demo_application/logout/">Log out</a>
+                </li>
+            {% endif %}
+            {% if is_granted("IS_AUTHENTICATED_ANONYMOUSLY") %}
+                <li class="nav-item">
+                    <div class="mt-1 pb-2 bt-2 pr-3 pl-2 bg-warning">
+                </li>
+                <li class="nav-item">
+                    <a class="text-light" href="/demo_application/user/create/">Sign in</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,60 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %}
+    List of submissions
+{% endblock %}
+
+{% block body %}
+<div class="ml-3 mr-3">
+    <!--author: Robin St-Georges date: 2020-08-06
+    Simple demo project realized with the goal to show understanding of PHP, Javascript & co.
+    Basic template used to create the list of all the current available submissions for the current user-->
+    <h1>My submissions</h1>
+</div>
+<div>
+    {% if created %}
+        <div class="text-success ml-3">
+            <p>
+                Your submission has been recorded successfully. You will be notified with the full price and additional informations once the process is completed.
+            </p>
+        </div>
+    {% endif %}
+
+    <!--If there is any submission available, we print them out. otherwise we tell the user that there is no available submissions-->
+    {% if submissions %}
+          <table id="submissions" class="table table-active">
+              <thead>
+                  <tr>
+                      <th>My submission id</th>
+                      <th>Type</th>
+                      <th>number of cars</th>
+                      <th>Submission's address</th>
+                      <th>Past claims</th>
+                      <th>Date of creation</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <!--Print all interesting fields for all available submissions-->
+              {% for submission in submissions %}
+                  <tr">
+                      <td>{{ submission.id }}</td>
+                      <td>{{ submission.type }}</td>
+                      <td>{{ submission.numberOfCars }}</td>
+                      <td>{{ submission.submissionAddress }}</td>
+                      <td>{{ submission.pastClaims }}</td>
+                      <td>{{ submission.date|date('Y-m-d') }}</td>
+                      <td><a href="/demo_application/submission/edit/{{ submission.id }}" class="btn btn-dark">Edit</a></td>
+                      <td><a href="#" class="btn btn-dark delete-submission" row-id="{{ submission.id }}">Delete</a></td>
+                  </tr>
+              {% endfor %}
+              </tbody>
+          </table>
+    {% else %}
+        <p>There is no current submissions in progress. Please check at a later time.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}

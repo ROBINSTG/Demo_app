@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Log in
+{% endblock %}
+
+{% block body %}
+<div class="ml-3 mr-4">
+    <!--author: Robin St-Georges date: 2020-08-06
+    Simple demo project realized with the goal to show understanding of PHP, Javascript & co.
+    Basic template used to create the login page of the application-->
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <h1 class="h3 mb-3 font-weight-normal">Please log in</h1>
+        <label for="inputName">Name</label>
+        <input type="text" value="{{ last_username }}" name="name" id="inputName" class="form-control" required autofocus>
+        <label for="inputPassword">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+
+        <button class="btn btn-dark mt-4" type="submit">
+            Sign in
+        </button>
+    </form>
+    <p class="mt-4">
+      <a href="/demo_application/home/">Back to homepage</a>
+    </p>
+</div>
+{% endblock %}
