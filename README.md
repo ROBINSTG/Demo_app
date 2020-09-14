@@ -6,7 +6,7 @@ This project has been created with the help of XAMPP, Symfony 5, MySQL, Javascri
 * Symfony 5:PHP framework used to create web applications.
 * MySQL: Relational database.
 * Javascript: Scripting language.
-= PHP: Scripting language.
+* PHP: Scripting language.
 
 Steps used to run the project with the tools specified(the project can also technically be run with any other tools supporting the necessary functions):
 1. install XAMPP.
